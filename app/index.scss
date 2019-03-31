@@ -18,6 +18,10 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
     Ubuntu, Cantarell, Helvetica Neue, sans-serif;
@@ -28,13 +32,45 @@ body {
   margin: 0 auto;
 }
 
+// ============ LANGUAGES ===============
+
 .languages {
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
 
   li {
     cursor: pointer;
     font-weight: bold;
     margin: 10px;
+  }
+}
+
+// ============ REPOS-GRID ===============
+
+.repos-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  &__item {
+    margin: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  &__rank {
+    font-size: 20px;
+  }
+
+  &__name {
+    color: var(--red);
   }
 }
