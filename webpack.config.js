@@ -8,10 +8,11 @@ module.exports = {
     filename: 'index_bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
+  resolve: { extensions: ['*', '.js', '.jsx'] },
   module: {
     rules: [
-      {test: /\.(js|jsx)$/, use: 'babel-loader'},
-      {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
+      { test: /\.(js|jsx)$/, use: 'babel-loader' },
+      { test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader'] }
     ]
   },
   plugins: [
@@ -22,4 +23,4 @@ module.exports = {
   devServer: {
     port: 3000
   }
-}
+};

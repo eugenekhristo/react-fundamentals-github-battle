@@ -1,5 +1,40 @@
+:root {
+  --red: #d0021b;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
 body {
-  background-color: dodgerblue;
-  color: white;
-  font-family: sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,
+    Ubuntu, Cantarell, Helvetica Neue, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.languages {
+  display: flex;
+  justify-content: center;
+
+  li {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 10px;
+  }
 }
