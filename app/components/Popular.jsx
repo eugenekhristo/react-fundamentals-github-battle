@@ -1,27 +1,43 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
+
+const SelectLanguage = ({ selectedLanguage, onLanguageSelection }) => {
+  const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
+
+  return (
+    <ul className="languages">
+      {languages.map(lang => (
+        <li
+          key={lang}
+          style={{ color: selectedLanguage === lang ? 'var(--red)' : '' }}
+          onClick={() => onLanguageSelection(lang)}
+        >
+          {lang}
+        </li>
+      ))}
+    </ul>
+  );
+};
+
+SelectLanguage.propTypes = {
+  selectedLanguage: PropTypes.string.isRequired,
+  onLanguageSelection: PropTypes.func.isRequired
+};
 
 class Popular extends Component {
   state = { selectedLanguage: 'All' };
 
-  handleLanguageSelection = lang => this.setState({selectedLanguage: lang})
+  handleLanguageSelection = lang => this.setState({ selectedLanguage: lang });
 
   render() {
-    const languages = ['All', 'JavaScript', 'Ruby', 'Java', 'CSS', 'Python'];
-    const {selectedLanguage} = this.state;
+    const { selectedLanguage } = this.state;
 
     return (
       <Fragment>
-        <ul className='languages'>
-          {languages.map(lang => (
-            <li 
-              key={lang}
-              style={{color: selectedLanguage === lang ? 'var(--red)' : ''}}
-              onClick={() => this.handleLanguageSelection(lang)}
-            >
-              {lang}
-            </li>
-          ))}
-        </ul>
+        <SelectLanguage
+          selectedLanguage={selectedLanguage}
+          onLanguageSelection={this.handleLanguageSelection}
+        />
       </Fragment>
     );
   }
