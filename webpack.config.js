@@ -6,7 +6,8 @@ module.exports = {
   entry: './app/index.js',
   output: {
     filename: 'index_bundle.js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   resolve: { extensions: ['*', '.js', '.jsx'] },
   module: {
@@ -21,6 +22,7 @@ module.exports = {
     })
   ],
   devServer: {
-    port: 3000
+    port: 3000,
+    historyApiFallback: true
   }
 };

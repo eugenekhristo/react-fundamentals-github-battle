@@ -56,9 +56,7 @@ class Popular extends Component {
   handleLanguageSelection = lang => {
     this.setState({ selectedLanguage: lang, repos: null });
 
-    api
-      .fetchAllRepos(this.state.selectedLanguage)
-      .then(repos => this.setState({ repos }));
+    api.fetchAllRepos(lang).then(repos => this.setState({ repos }));
   };
 
   componentDidMount() {
@@ -79,4 +77,5 @@ class Popular extends Component {
     );
   }
 }
+
 export default Popular;
