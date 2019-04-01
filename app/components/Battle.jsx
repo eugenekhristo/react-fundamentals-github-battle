@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class BattleInput extends Component {
   state = {
@@ -101,41 +102,55 @@ class Battle extends Component {
     } = this.state;
 
     return (
-      <div className="row">
-        {!playerOneName && (
-          <BattleInput
-            label="Player One"
-            id="playerOne"
-            onSubmit={this.handleSubmit}
-          />
-        )}
+      <Fragment>
+        <div className="row">
+          {!playerOneName && (
+            <BattleInput
+              label="Player One"
+              id="playerOne"
+              onSubmit={this.handleSubmit}
+            />
+          )}
 
-        {playerOneImage !== null && (
-          <PlayerPreview
-            id="playerOne"
-            username={playerOneName}
-            imageUrl={playerOneImage}
-            onReset={this.handleReset}
-          />
-        )}
+          {playerOneImage !== null && (
+            <PlayerPreview
+              id="playerOne"
+              username={playerOneName}
+              imageUrl={playerOneImage}
+              onReset={this.handleReset}
+            />
+          )}
 
-        {!playerTwoName && (
-          <BattleInput
-            label="Player Two"
-            id="playerTwo"
-            onSubmit={this.handleSubmit}
-          />
-        )}
+          {!playerTwoName && (
+            <BattleInput
+              label="Player Two"
+              id="playerTwo"
+              onSubmit={this.handleSubmit}
+            />
+          )}
 
-        {playerTwoImage !== null && (
-          <PlayerPreview
-            id="playerTwo"
-            username={playerTwoName}
-            imageUrl={playerTwoImage}
-            onReset={this.handleReset}
-          />
+          {playerTwoImage !== null && (
+            <PlayerPreview
+              id="playerTwo"
+              username={playerTwoName}
+              imageUrl={playerTwoImage}
+              onReset={this.handleReset}
+            />
+          )}
+        </div>
+        {playerOneName && playerTwoName && (
+          <Link
+            className="button"
+            style={{ cursor: 'pointer' }}
+            to={{
+              pathname: `${this.props.match.url}/results`,
+              search: `playerOneName=${playerOneName}$playerTwoName=${playerTwoName}`
+            }}
+          >
+            Battle
+          </Link>
         )}
-      </div>
+      </Fragment>
     );
   }
 }
